@@ -1,0 +1,10 @@
+#define DLG_TEST                    1000
+#define DLG_TEST_ST_TEST            1001
+#define DLG_TEST_ST_NAME            1002
+#define DLG_TEST_ST_PLAY            1003
+#define DLG_TEST_ST_EVENT           1004
+#define DLG_TEST_PB_OK              1005
+#define DLG_TEST_PB_HELP            1006
+#define DLG_TEST_PB_PREV            1007
+#define DLG_TEST_PB_NEXT            1008
+#define DLG_TEST_PB_REPEAT          1009

@@ -1,0 +1,26 @@
+#ifndef OS2_INCLUDED
+   #include <os2.h>
+#endif
+#include "test.h"
+
+BITMAP 1201 Prev.BMP
+BITMAP 1202 Repeat.BMP
+BITMAP 1203 Next.BMP
+
+DLGTEMPLATE DLG_TEST LOADONCALL MOVEABLE DISCARDABLE
+BEGIN
+    DIALOG  "SSM - Testing Sound Scheme", DLG_TEST, 20, 20, 226, 52,
+            FS_NOMOVEWITHOWNER | NOT FS_DLGBORDER | FS_BORDER | WS_VISIBLE,
+            FCF_SYSMENU | FCF_TITLEBAR | FCF_TASKLIST
+    BEGIN
+        LTEXT           "Testing scheme:", DLG_TEST_ST_TEST, 8, 36, 68, 8
+        LTEXT           "Name of scheme", DLG_TEST_ST_NAME, 80, 36, 138, 8
+        LTEXT           "Playing event:", DLG_TEST_ST_PLAY, 8, 24, 68, 8
+        LTEXT           "Name of event", DLG_TEST_ST_EVENT, 80, 24, 138, 8
+        DEFPUSHBUTTON   "~Ok", DLG_TEST_PB_OK, 8, 4, 40, 14
+        PUSHBUTTON      "~Help", DLG_TEST_PB_HELP, 52, 4, 40, 14, BS_HELP | NOT WS_TABSTOP
+        PUSHBUTTON      "#1201", DLG_TEST_PB_PREV, 96, 4, 38, 14, BS_BITMAP
+        PUSHBUTTON      "#1202", DLG_TEST_PB_REPEAT, 138, 4, 38, 14, BS_BITMAP
+        PUSHBUTTON      "#1203", DLG_TEST_PB_NEXT, 180, 4, 38, 14, BS_BITMAP
+    END
+END

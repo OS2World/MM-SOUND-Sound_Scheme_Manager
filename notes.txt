@@ -1,0 +1,69 @@
+Sound Scheme Manager 2.0
+Product Notes
+
+D.J. van Enckevort
+
+November 6, 1998
+
+
+Table of Contents
+1. Description
+2. Targets
+3. To do
+4. Bugs
+4.1 SSM Bugs
+4.2 OS/2 Bugs
+
+1. Description
+Sound Scheme Manager 2.0 is a program to create, manage and distribute Sound
+Schemes. It is intended to work on OS/2 Warp and above. However Sound Schemes
+were only introduced in OS/2 Warp 4.0. Thus I have created a new local profile
+to store the schemes in. This has the advantage that I am not dependent on IBM
+for the schemes and can add extra information. For OS/2 Warp 4.0 users the
+ability to import and export schemes to the system profile will be added. Also
+will be added the possibility to export schemes to zipfiles, provided Info Zip
+is installed.
+
+2. Targets
+Sound Scheme Manager 2.0 should be released before the release of Warp 5.0, but
+will be tested with the beta. Also does it have to be released before 1999. It
+should be a complete program with the following specifications:
+* Full managing of sound schemes:
+  - Add
+  - Delete
+  - Change
+  - Copy
+  - Apply
+  - Working with current scheme
+* Gadgets:
+  - Import
+  - Export
+  - Find
+* Set volume
+* Work with all versions of OS/2 Warp
+* It should be a complete replacement of the Sound object in OS/2 Warp
+
+3. To do
+A lot has to be done:
+* Fix managing of sound schemes (done)
+   - Add (done)
+   - Delete (done)
+   - Change (done)
+   - Copy (done)
+   - Apply (done)
+   - Current scheme (done)
+* Add Find
+* Add Import/Export
+* Add volume management
+* Add Help
+* Update documentation
+* Add Settings
+
+4. Bugs
+4.1 SSM Bugs
+* Restore <current> doesn't work correctly when <current> is selected.
+* alt-Backspace for undo doesn't work
+4.2 OS/2 Bugs
+* MMOS/2 misses one description, for End Drag: Add patch. (Does it? <=FP 5 
+certainly, FP 6 solves it?)
+

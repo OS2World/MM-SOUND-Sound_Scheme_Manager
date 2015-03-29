@@ -1,0 +1,35 @@
+#ifndef OS2_INCLUDED
+   #include <os2.h>
+#endif
+#include "main.h"
+
+DLGTEMPLATE ID_WINDOW LOADONCALL MOVEABLE DISCARDABLE
+BEGIN
+    DIALOG  "Sound Scheme Manager 1.1 beta 2", ID_WINDOW, 4, -32, 308, 188,
+            FS_DLGBORDER | FS_BORDER | WS_VISIBLE, FCF_SYSMENU |
+            FCF_TITLEBAR | FCF_MINBUTTON | FCF_TASKLIST
+    BEGIN
+        LTEXT           "Sound Schemes", ST_SCHEMES, 8, 164, 136, 8
+        LISTBOX         LB_SCHEMES, 8, 104, 136, 56
+        LTEXT           "Events", ST_ACTIONS, 8, 92, 136, 8
+        LISTBOX         LB_ACTIONS, 8, 8, 136, 84
+        GROUPBOX        "", GB_SCHEMES, 152, 108, 148, 48, NOT WS_GROUP
+        PUSHBUTTON      "~Add", PB_ADD, 156, 132, 45, 14
+        PUSHBUTTON      "~Copy", PB_COPY, 204, 132, 45, 14
+        PUSHBUTTON      "~Test", PB_TEST, 252, 132, 44, 14
+        PUSHBUTTON      "~Delete", PB_DELETE, 156, 112, 45, 14
+        PUSHBUTTON      "~Rename", PB_RENAME, 204, 112, 45, 14
+        PUSHBUTTON      "Apply", PB_APPLY, 252, 112, 44, 14
+        LTEXT           "Sound File", ST_SOUND, 152, 92, 148, 8
+        ENTRYFIELD      "", EF_SOUND, 154, 78, 144, 8, ES_MARGIN
+        CONTROL         "Volume", CSL_VOLUME, 252, 28, 44, 34, WC_CIRCULARSLIDER,
+                        WS_TABSTOP | WS_VISIBLE | CSS_POINTSELECT
+        GROUPBOX        "", GB_ACTIONS, 152, 12, 148, 60
+        PUSHBUTTON      "~Locate", PB_LOCATE, 156, 48, 45, 14
+        PUSHBUTTON      "~Play", PB_PLAY, 204, 48, 45, 14
+        PUSHBUTTON      "~Undo", PB_UNDO, 156, 28, 45, 14
+        PUSHBUTTON      "Help", PB_HELP, 204, 28, 45, 14, BS_HELP
+        AUTOCHECKBOX    "Apply volume to all events", RB_VOLUME, 156, 16,
+                        124, 10
+    END
+END

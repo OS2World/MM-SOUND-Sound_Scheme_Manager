@@ -1,0 +1,15 @@
+#include <os2.h>
+#include "question.h"
+
+DLGTEMPLATE DLG_DIALOG LOADONCALL MOVEABLE DISCARDABLE
+BEGIN
+    DIALOG  "Question", DLG_DIALOG, 12, 6, 162, 50, WS_VISIBLE,
+            FCF_SYSMENU | FCF_TITLEBAR
+    BEGIN
+        LTEXT           "Name:", DLG_ST_NAME, 12, 36, 137, 8
+        ENTRYFIELD      "", DLG_EF_NAME, 14, 24, 134, 8, ES_MARGIN
+        DEFPUSHBUTTON   "~Ok", DLG_PB_OK, 11, 4, 40, 14
+        PUSHBUTTON      "~Cancel", DLG_PB_CANCEL, 60, 4, 40, 14
+        PUSHBUTTON      "~Help", DLG_PB_HELP, 110, 4, 40, 14, BS_HELP
+    END
+END

@@ -1,0 +1,25 @@
+#ifndef OS2_INCLUDED
+   #include <os2.h>
+#endif
+#include "settings.h"
+
+DLGTEMPLATE DLG_SETTINGS LOADONCALL MOVEABLE DISCARDABLE
+BEGIN
+    DIALOG  "SSM - Settings", DLG_SETTINGS, 12, 4, 216, 93, NOT FS_DLGBORDER |
+            FS_BORDER | WS_VISIBLE, FCF_SYSMENU | FCF_TITLEBAR
+    BEGIN
+        LTEXT           "Sounds path:", SET_ST_SOUND_PATH, 8, 82, 56, 8
+        ENTRYFIELD      "", SET_EF_SOUND_PATH, 10, 72, 196, 8, ES_MARGIN
+        AUTOCHECKBOX    "Enable Sounds", 3912, 8, 60, 76, 10
+        DEFPUSHBUTTON   "~Ok", SET_PB_OK, 8, 4, 40, 14, WS_GROUP
+        PUSHBUTTON      "~Cancel", SET_PB_CANCEL, 52, 4, 40, 14, NOT
+                        WS_TABSTOP
+        PUSHBUTTON      "~Help", SET_PB_HELP, 96, 4, 40, 14, BS_HELP | NOT
+                        WS_TABSTOP
+        AUTOCHECKBOX    "Place imported schemes", SET_CB_DIRECTORY, 8, 46,
+                        176, 14
+        LTEXT           "in subdirectory", 3914, 18, 40, 77, 8
+        AUTOCHECKBOX    "Use default volume for all events", 3970, 8, 28,
+                        199, 10
+    END
+END

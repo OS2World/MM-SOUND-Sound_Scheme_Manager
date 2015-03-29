@@ -1,0 +1,2 @@
+#define ID_ACCELTABLE 700
+

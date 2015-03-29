@@ -1,0 +1,89 @@
+#include <os2.h>
+#include "main.h"
+#include "question.h"
+#include "find.h"
+#include "menu.h"
+#include "icon.h"
+#include "stringtable.h"
+#include "acceltable.h"
+#include "test.h"
+#include "prodinfo.h"
+#include "settings.h"
+
+ICON ID_ICON ssm.ico
+BITMAP 1107 ssm.bmp
+
+MENU ID_MENU LOADONCALL
+BEGIN
+  SUBMENU "~File", MN_FILE
+  BEGIN
+    MENUITEM "~Import\tCtrl+I", MI_IMPORT
+    MENUITEM "~Export\tCtrl+E", MI_EXPORT
+    MENUITEM SEPARATOR
+    MENUITEM "~Settings", MI_SETTINGS
+    MENUITEM SEPARATOR
+    MENUITEM "~Close\tAlt+F4", MI_CLOSE
+  END
+  SUBMENU "~Edit", MN_EDIT
+  BEGIN
+    MENUITEM "~Undo\tAlt+Backspace", MI_UNDO
+    MENUITEM "Restore <current>\tCtrl-R", MI_RESTORE
+    MENUITEM SEPARATOR
+    MENUITEM "Cu~t\tShift+Delete", MI_CUT
+    MENUITEM "~Copy\tCtrl+Insert", MI_COPY
+    MENUITEM "~Paste\tShift+Insert", MI_PASTE
+    MENUITEM SEPARATOR
+    MENUITEM "~Find\tCtrl+F", MI_FIND
+  END
+  SUBMENU "~Help", MN_HELP
+  BEGIN
+    MENUITEM "Help Index\tShift+F1", MI_HELPINDEX
+    MENUITEM "General Help\tF1", MI_GENERALHELP
+    MENUITEM "Using Help\tCtrl+F1", MI_USINGHELP
+    MENUITEM "Product Info\tF12", MI_PRODUCTINFO
+  END
+END
+
+ACCELTABLE ID_ACCELTABLE
+BEGIN
+  "e", MI_EXPORT, CONTROL
+  "f", MI_FIND, CONTROL
+  "i", MI_IMPORT, CONTROL
+  "r", MI_RESTORE, CONTROL
+  VK_F1, MI_HELPINDEX, VIRTUALKEY, SHIFT
+  VK_F1, MI_USINGHELP, VIRTUALKEY, CONTROL
+  VK_F12, MI_PRODUCTINFO, VIRTUALKEY
+END
+
+STRINGTABLE
+BEGIN
+  CREATE_TITLE, "SSM - Create sound scheme"
+  COPY_TITLE, "SSM - Copy sound scheme"
+  RENAME_TITLE, "SSM - Rename sound scheme"
+  MOVE_TITLE, "SSM - Move sound scheme"
+  CREATE_TEXT, "Name of the sound scheme:"
+  COPY_TEXT, "Name to copy to:"
+  RENAME_TEXT, "New name:"
+  MOVE_TEXT, "Name to move to:"
+  WARNING_TITLE, "Warning"
+  QUESTION_TITLE, "Question"
+  ERROR_TITLE, "Error"
+  DEBUG_TITLE, "Debug"
+  IMPORT_MESSAGE, "Should I import the System Sound Schemes?"
+  NOMMPMINI_MESSAGE, "I cannot open MMPM.INI, this program cannot run. Check MMBASE in your CONFIG.SYS"
+  ACCEL_MESSAGE, "I could not load the accelerator table."
+  ACTIEF_SCHEMA, "<Active scheme>"
+  DELETE_TEXT, "You are about to delete a Sound Scheme, are you sure?"
+  DELETE_TITLE, "SSM - Delete Sound Scheme"
+  NOSCHEMEINI_MESSAGE, "I cannot open SCHEME.INI, this program cannot run."
+  NOMMOS2INI_MESSAGE, "I cannot open MMPM2.INI, this program cannot run."
+  NOSSMINI_MESSAGE, "I cannot open SSM.INI, this program cannot run."
+END
+
+RCINCLUDE "main.dlg"
+RCINCLUDE "question.dlg"
+RCINCLUDE "find.dlg"
+RCINCLUDE "test.dlg"
+RCINCLUDE "prodinfo.dlg"
+RCINCLUDE "settings.dlg"
+

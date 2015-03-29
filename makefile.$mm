@@ -1,0 +1,189 @@
+:TARGET.SUFFIXES
+:DEPENDENCY..c .obj .rc .res 
+:TARGET.all
+:DEPENDENCY.
+.\ssm.exe
+:RULE..c.obj
+:ACTION.Compile::C++ Compiler
+:COMMAND.
+icc.exe /Tdp /Q /Ti /C %s
+:RULE.{e:\data\c\ssm}.c.obj
+:ACTION.Compile::C++ Compiler
+:COMMAND.
+icc.exe /Tdp /Q /Ti /C %s
+:RULE..rc.res
+:ACTION.Compile::Resource Compiler
+:COMMAND.
+rc.exe -r %s %|dpfF.RES
+:RULE.{e:\data\c\ssm}.rc.res
+:ACTION.Compile::Resource Compiler
+:COMMAND.
+rc.exe -r %s %|dpfF.RES
+:TARGET..\ssm.exe
+:DEPENDENCY.
+.\support.obj
+.\test.obj
+.\find.obj
+.\main.obj
+.\pmtools.obj
+.\prodinfo.obj
+.\question.obj
+.\settings.obj
+.\ssm.obj
+.\ssm.res
+{$(LIB)}os2386.lib
+{$(LIB)}mmpm2.lib
+{$(LIB)}cppom30.lib
+{$(LIB)}ssm.def
+:ACTION.Link::Linker
+:COMMAND.
+icc.exe @<<
+ /B" /de /exepack:2 /pmtype:pm /packd /nologo"
+ /Fessm.exe 
+ os2386.lib 
+ mmpm2.lib 
+ cppom30.lib 
+ ssm.def
+ .\support.obj
+ .\test.obj
+ .\find.obj
+ .\main.obj
+ .\pmtools.obj
+ .\prodinfo.obj
+ .\question.obj
+ .\settings.obj
+ .\ssm.obj
+<<
+:ACTION.Bind::Resource Bind
+:COMMAND.
+rc.exe .\ssm.res ssm.exe
+:TARGET..\support.obj
+:DEPENDENCY.
+e:\data\c\ssm\support.c
+{e:\data\c\ssm;$(INCLUDE);}ssm.h
+{e:\data\c\ssm;$(INCLUDE);}support.h
+{e:\data\c\ssm;$(INCLUDE);}main.h
+{e:\data\c\ssm;$(INCLUDE);}acceltable.h
+{e:\data\c\ssm;$(INCLUDE);}stringtable.h
+{e:\data\c\ssm;$(INCLUDE);}test.h
+{e:\data\c\ssm;$(INCLUDE);}menu.h
+{e:\data\c\ssm;$(INCLUDE);}question.h
+{e:\data\c\ssm;$(INCLUDE);}find.h
+{e:\data\c\ssm;$(INCLUDE);}icon.h
+{e:\data\c\ssm;$(INCLUDE);}prodinfo.h
+{e:\data\c\ssm;$(INCLUDE);}settings.h
+{e:\data\c\ssm;$(INCLUDE);}pmtools.h
+:TARGET..\ssm.obj
+:DEPENDENCY.
+e:\data\c\ssm\ssm.c
+{e:\data\c\ssm;$(INCLUDE);}ssm.h
+{e:\data\c\ssm;$(INCLUDE);}support.h
+{e:\data\c\ssm;$(INCLUDE);}main.h
+{e:\data\c\ssm;$(INCLUDE);}acceltable.h
+{e:\data\c\ssm;$(INCLUDE);}stringtable.h
+{e:\data\c\ssm;$(INCLUDE);}test.h
+{e:\data\c\ssm;$(INCLUDE);}menu.h
+{e:\data\c\ssm;$(INCLUDE);}question.h
+{e:\data\c\ssm;$(INCLUDE);}find.h
+{e:\data\c\ssm;$(INCLUDE);}icon.h
+{e:\data\c\ssm;$(INCLUDE);}prodinfo.h
+{e:\data\c\ssm;$(INCLUDE);}settings.h
+{e:\data\c\ssm;$(INCLUDE);}pmtools.h
+:TARGET..\settings.obj
+:DEPENDENCY.
+e:\data\c\ssm\settings.c
+{e:\data\c\ssm;$(INCLUDE);}ssm.h
+{e:\data\c\ssm;$(INCLUDE);}support.h
+{e:\data\c\ssm;$(INCLUDE);}main.h
+{e:\data\c\ssm;$(INCLUDE);}acceltable.h
+{e:\data\c\ssm;$(INCLUDE);}stringtable.h
+{e:\data\c\ssm;$(INCLUDE);}settings.h
+:TARGET..\question.obj
+:DEPENDENCY.
+e:\data\c\ssm\question.c
+{e:\data\c\ssm;$(INCLUDE);}ssm.h
+{e:\data\c\ssm;$(INCLUDE);}support.h
+{e:\data\c\ssm;$(INCLUDE);}main.h
+{e:\data\c\ssm;$(INCLUDE);}acceltable.h
+{e:\data\c\ssm;$(INCLUDE);}stringtable.h
+{e:\data\c\ssm;$(INCLUDE);}question.h
+:TARGET..\prodinfo.obj
+:DEPENDENCY.
+e:\data\c\ssm\prodinfo.c
+{e:\data\c\ssm;$(INCLUDE);}ssm.h
+{e:\data\c\ssm;$(INCLUDE);}support.h
+{e:\data\c\ssm;$(INCLUDE);}main.h
+{e:\data\c\ssm;$(INCLUDE);}acceltable.h
+{e:\data\c\ssm;$(INCLUDE);}stringtable.h
+{e:\data\c\ssm;$(INCLUDE);}test.h
+{e:\data\c\ssm;$(INCLUDE);}menu.h
+{e:\data\c\ssm;$(INCLUDE);}question.h
+{e:\data\c\ssm;$(INCLUDE);}find.h
+{e:\data\c\ssm;$(INCLUDE);}icon.h
+{e:\data\c\ssm;$(INCLUDE);}prodinfo.h
+{e:\data\c\ssm;$(INCLUDE);}settings.h
+{e:\data\c\ssm;$(INCLUDE);}pmtools.h
+:TARGET..\pmtools.obj
+:DEPENDENCY.
+e:\data\c\ssm\pmtools.c
+:TARGET..\main.obj
+:DEPENDENCY.
+e:\data\c\ssm\main.c
+{e:\data\c\ssm;$(INCLUDE);}ssm.h
+{e:\data\c\ssm;$(INCLUDE);}support.h
+{e:\data\c\ssm;$(INCLUDE);}main.h
+{e:\data\c\ssm;$(INCLUDE);}acceltable.h
+{e:\data\c\ssm;$(INCLUDE);}stringtable.h
+{e:\data\c\ssm;$(INCLUDE);}test.h
+{e:\data\c\ssm;$(INCLUDE);}menu.h
+{e:\data\c\ssm;$(INCLUDE);}question.h
+{e:\data\c\ssm;$(INCLUDE);}find.h
+{e:\data\c\ssm;$(INCLUDE);}icon.h
+{e:\data\c\ssm;$(INCLUDE);}prodinfo.h
+{e:\data\c\ssm;$(INCLUDE);}settings.h
+{e:\data\c\ssm;$(INCLUDE);}pmtools.h
+:TARGET..\find.obj
+:DEPENDENCY.
+e:\data\c\ssm\find.c
+{e:\data\c\ssm;$(INCLUDE);}ssm.h
+{e:\data\c\ssm;$(INCLUDE);}support.h
+{e:\data\c\ssm;$(INCLUDE);}main.h
+{e:\data\c\ssm;$(INCLUDE);}acceltable.h
+{e:\data\c\ssm;$(INCLUDE);}stringtable.h
+{e:\data\c\ssm;$(INCLUDE);}test.h
+{e:\data\c\ssm;$(INCLUDE);}menu.h
+{e:\data\c\ssm;$(INCLUDE);}question.h
+{e:\data\c\ssm;$(INCLUDE);}find.h
+{e:\data\c\ssm;$(INCLUDE);}icon.h
+{e:\data\c\ssm;$(INCLUDE);}prodinfo.h
+{e:\data\c\ssm;$(INCLUDE);}settings.h
+{e:\data\c\ssm;$(INCLUDE);}pmtools.h
+:TARGET..\test.obj
+:DEPENDENCY.
+e:\data\c\ssm\test.c
+{e:\data\c\ssm;$(INCLUDE);}ssm.h
+{e:\data\c\ssm;$(INCLUDE);}support.h
+{e:\data\c\ssm;$(INCLUDE);}main.h
+{e:\data\c\ssm;$(INCLUDE);}acceltable.h
+{e:\data\c\ssm;$(INCLUDE);}stringtable.h
+{e:\data\c\ssm;$(INCLUDE);}test.h
+:TARGET..\ssm.res
+:DEPENDENCY.
+e:\data\c\ssm\ssm.rc
+{e:\data\c\ssm;$(INCLUDE)}settings.dlg
+{e:\data\c\ssm;$(INCLUDE)}settings.h
+{e:\data\c\ssm;$(INCLUDE)}prodinfo.dlg
+{e:\data\c\ssm;$(INCLUDE)}prodinfo.h
+{e:\data\c\ssm;$(INCLUDE)}test.dlg
+{e:\data\c\ssm;$(INCLUDE)}test.h
+{e:\data\c\ssm;$(INCLUDE)}find.dlg
+{e:\data\c\ssm;$(INCLUDE)}find.h
+{e:\data\c\ssm;$(INCLUDE)}question.dlg
+{e:\data\c\ssm;$(INCLUDE)}question.h
+{e:\data\c\ssm;$(INCLUDE)}main.dlg
+{e:\data\c\ssm;$(INCLUDE)}main.h
+{e:\data\c\ssm;$(INCLUDE)}ssm.ico
+{e:\data\c\ssm;$(INCLUDE)}acceltable.h
+{e:\data\c\ssm;$(INCLUDE)}stringtable.h
+{e:\data\c\ssm;$(INCLUDE)}icon.h
+{e:\data\c\ssm;$(INCLUDE)}menu.h

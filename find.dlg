@@ -1,0 +1,27 @@
+#ifndef OS2_INCLUDED
+   #include <os2.h>
+#endif
+#include "find.h"
+
+DLGTEMPLATE DLG_FIND LOADONCALL MOVEABLE DISCARDABLE
+BEGIN
+    DIALOG  "SSM - Find", DLG_FIND, 20, -16, 236, 158, NOT FS_DLGBORDER |
+            FS_BORDER | FS_SCREENALIGN | WS_VISIBLE, FCF_SYSMENU |
+            FCF_TITLEBAR
+    BEGIN
+        LTEXT           "Results:", FIND_ST_RESULT, 8, 144, 220, 8, NOT
+                        WS_GROUP
+        LISTBOX         FIND_LB_RESULT, 8, 72, 220, 72, LS_HORZSCROLL
+        LTEXT           "Find:", FIND_ST_FIND, 8, 60, 220, 8
+        ENTRYFIELD      "", FIND_EF_FIND, 10, 50, 172, 8, ES_MARGIN
+        LTEXT           "Replace with:", FIND_ST_REPLACE, 8, 36, 220, 8, NOT
+                        WS_GROUP
+        ENTRYFIELD      "", FIND_EF_REPLACE, 10, 26, 172, 8, ES_MARGIN
+        DEFPUSHBUTTON   "~Find", FIND_PB_FIND, 188, 48, 40, 14, WS_GROUP
+        PUSHBUTTON      "~Replace", FIND_PB_REPLACE, 188, 24, 40, 14, NOT
+                        WS_TABSTOP
+        PUSHBUTTON      "~Close", FIND_PB_CLOSE, 8, 4, 40, 14, WS_GROUP
+        PUSHBUTTON      "~Help", FIND_PB_HELP, 52, 4, 40, 14, BS_HELP | NOT
+                        WS_TABSTOP
+    END
+END

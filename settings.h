@@ -1,0 +1,11 @@
+#define DLG_SETTINGS                3900
+#define SET_ST_SOUND_PATH           3901
+#define SET_EF_SOUND_PATH           3902
+#define SET_PB_OK                   3903
+#define SET_PB_CANCEL               3904
+#define SET_PB_HELP                 3905
+#define SET_CB_DIRECTORY            3907
+#define SET_CB_ENABLE_SOUNDS        3909
+#define SET_CSL_DEFAULT_VOLUME      3910
+#define SET_CB_VOLUME               3908
+#define SET_ST_EXTRA                3911

@@ -1,0 +1,21 @@
+#ifndef OS2_INCLUDED
+   #include <os2.h>
+#endif
+#include "prodinfo.h"
+
+DLGTEMPLATE DLG_PRODINFO LOADONCALL MOVEABLE DISCARDABLE
+BEGIN
+    DIALOG  "Product Information", DLG_PRODINFO, 12, 4, 172, 120, NOT
+            FS_DLGBORDER | FS_BORDER | WS_VISIBLE, FCF_TITLEBAR
+    BEGIN
+        CTEXT           "Version 1.1 Beta 2", PRODINFO_ST_BETA, 0, 56, 172, 8,
+                        DT_VCENTER
+        CTEXT           "Copyright 1996-1997 by", PRODINFO_ST_COPYRIGHT, 0,
+                        44, 172, 8, DT_VCENTER
+        CTEXT           "D.J. van Enckevort", PRODINFO_ST_NAME, 0, 32, 172,
+                        8, DT_VCENTER
+        DEFPUSHBUTTON   "~Ok", PRODINFO_PB_OK, 63, 4, 40, 14
+        CONTROL         "#1107", 1107, 43, 68, 86, 52, WC_STATIC, SS_BITMAP |
+                        WS_GROUP | WS_VISIBLE
+    END
+END
