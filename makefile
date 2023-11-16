@@ -1,195 +1,57 @@
-# makefile
-# Created by IBM WorkFrame/2 MakeMake at 6:05:55 on 21 July 1999
+# nmake makefile
 #
-# The actions included in this make file are:
-#  Compile::C++ Compiler
-#  Link::Linker
-#  Bind::Resource Bind
-#  Compile::Resource Compiler
+# Tools used:
+#  Compile::Watcom Resource Compiler
+#  Compile::GNU C
+#  Make: nmake or GNU make
 
-.SUFFIXES: .c .obj .rc .res 
+CFLAGS=-Wall -Zomf -c -O2
+DEBUGFLAGS=-g
 
-.all: \
-    .\ssm.exe
+HEADERS = acceltable.h find.h icon.h main.h menu.h pmtools.h prodinfo.h question.h settings.h ssm.h stringtable.h suport.h test.h
+OBJS = main.obj find.obj pmtools.obj prodinfo.obj question.obj settings.obj ssm.obj support.obj test.obj
+ALL_IPF = help.ipf
 
-.c.obj:
-    @echo " Compile::C++ Compiler "
-    icc.exe /Tdp /Q /Ti /C %s
+all : ssm.exe
 
-{e:\data\c\ssm}.c.obj:
-    @echo " Compile::C++ Compiler "
-    icc.exe /Tdp /Q /Ti /C %s
+ssm.exe: $(OBJS) ssm.res
+	gcc -Zomf -Zmap $(OBJS) ssm.def ssm.res -o $@
+	wrc ssm.res
 
-.rc.res:
-    @echo " Compile::Resource Compiler "
-    rc.exe -r %s %|dpfF.RES
+main.obj: main.c $(HEADER)
+	gcc $(CFLAGS) $(DEBUGFLAGS) main.c -o main.obj
 
-{e:\data\c\ssm}.rc.res:
-    @echo " Compile::Resource Compiler "
-    rc.exe -r %s %|dpfF.RES
+find.obj: find.c $(HEADERS)
+	gcc $(CFLAGS) $(DEBUGFLAGS) find.c -o find.obj
 
-.\ssm.exe: \
-    .\support.obj \
-    .\test.obj \
-    .\find.obj \
-    .\main.obj \
-    .\pmtools.obj \
-    .\prodinfo.obj \
-    .\question.obj \
-    .\settings.obj \
-    .\ssm.obj \
-    .\ssm.res \
-    {$(LIB)}os2386.lib \
-    {$(LIB)}mmpm2.lib \
-    {$(LIB)}cppom30.lib \
-    {$(LIB)}ssm.def
-    @echo " Link::Linker "
-    @echo " Bind::Resource Bind "
-    icc.exe @<<
-     /B" /de /exepack:2 /pmtype:pm /packd /nologo"
-     /Fessm.exe 
-     os2386.lib 
-     mmpm2.lib 
-     cppom30.lib 
-     ssm.def
-     .\support.obj
-     .\test.obj
-     .\find.obj
-     .\main.obj
-     .\pmtools.obj
-     .\prodinfo.obj
-     .\question.obj
-     .\settings.obj
-     .\ssm.obj
-<<
-    rc.exe .\ssm.res ssm.exe
+pmtools.obj: pmtools.c $(HEADERS) 
+	gcc $(CFLAGS) $(DEBUGFLAGS) pmtools.c -o pmtools.obj
 
-.\support.obj: \
-    e:\data\c\ssm\support.c \
-    {e:\data\c\ssm;$(INCLUDE);}ssm.h \
-    {e:\data\c\ssm;$(INCLUDE);}support.h \
-    {e:\data\c\ssm;$(INCLUDE);}main.h \
-    {e:\data\c\ssm;$(INCLUDE);}acceltable.h \
-    {e:\data\c\ssm;$(INCLUDE);}stringtable.h \
-    {e:\data\c\ssm;$(INCLUDE);}test.h \
-    {e:\data\c\ssm;$(INCLUDE);}menu.h \
-    {e:\data\c\ssm;$(INCLUDE);}question.h \
-    {e:\data\c\ssm;$(INCLUDE);}find.h \
-    {e:\data\c\ssm;$(INCLUDE);}icon.h \
-    {e:\data\c\ssm;$(INCLUDE);}prodinfo.h \
-    {e:\data\c\ssm;$(INCLUDE);}settings.h \
-    {e:\data\c\ssm;$(INCLUDE);}pmtools.h
+prodinfo.obj: prodinfo.c $(HEADERS)
+	gcc $(CFLAGS) $(DEBUGFLAGS) prodinfo.c -o prodinfo.obj
 
-.\ssm.obj: \
-    e:\data\c\ssm\ssm.c \
-    {e:\data\c\ssm;$(INCLUDE);}ssm.h \
-    {e:\data\c\ssm;$(INCLUDE);}support.h \
-    {e:\data\c\ssm;$(INCLUDE);}main.h \
-    {e:\data\c\ssm;$(INCLUDE);}acceltable.h \
-    {e:\data\c\ssm;$(INCLUDE);}stringtable.h \
-    {e:\data\c\ssm;$(INCLUDE);}test.h \
-    {e:\data\c\ssm;$(INCLUDE);}menu.h \
-    {e:\data\c\ssm;$(INCLUDE);}question.h \
-    {e:\data\c\ssm;$(INCLUDE);}find.h \
-    {e:\data\c\ssm;$(INCLUDE);}icon.h \
-    {e:\data\c\ssm;$(INCLUDE);}prodinfo.h \
-    {e:\data\c\ssm;$(INCLUDE);}settings.h \
-    {e:\data\c\ssm;$(INCLUDE);}pmtools.h
+question.obj: question.c $(HEADERS)
+	gcc $(CFLAGS) $(DEBUGFLAGS) question.c -o question.obj
 
-.\settings.obj: \
-    e:\data\c\ssm\settings.c \
-    {e:\data\c\ssm;$(INCLUDE);}ssm.h \
-    {e:\data\c\ssm;$(INCLUDE);}support.h \
-    {e:\data\c\ssm;$(INCLUDE);}main.h \
-    {e:\data\c\ssm;$(INCLUDE);}acceltable.h \
-    {e:\data\c\ssm;$(INCLUDE);}stringtable.h \
-    {e:\data\c\ssm;$(INCLUDE);}settings.h
+settings.obj: settings.c  $(HEADERS)
+	gcc $(CFLAGS) $(DEBUGFLAGS) settings.c -o settings.obj
 
-.\question.obj: \
-    e:\data\c\ssm\question.c \
-    {e:\data\c\ssm;$(INCLUDE);}ssm.h \
-    {e:\data\c\ssm;$(INCLUDE);}support.h \
-    {e:\data\c\ssm;$(INCLUDE);}main.h \
-    {e:\data\c\ssm;$(INCLUDE);}acceltable.h \
-    {e:\data\c\ssm;$(INCLUDE);}stringtable.h \
-    {e:\data\c\ssm;$(INCLUDE);}question.h
+ssm.obj: ssm.c  $(HEADERS)
+	gcc $(CFLAGS) $(DEBUGFLAGS) ssm.c -o ssm.obj
 
-.\prodinfo.obj: \
-    e:\data\c\ssm\prodinfo.c \
-    {e:\data\c\ssm;$(INCLUDE);}ssm.h \
-    {e:\data\c\ssm;$(INCLUDE);}support.h \
-    {e:\data\c\ssm;$(INCLUDE);}main.h \
-    {e:\data\c\ssm;$(INCLUDE);}acceltable.h \
-    {e:\data\c\ssm;$(INCLUDE);}stringtable.h \
-    {e:\data\c\ssm;$(INCLUDE);}test.h \
-    {e:\data\c\ssm;$(INCLUDE);}menu.h \
-    {e:\data\c\ssm;$(INCLUDE);}question.h \
-    {e:\data\c\ssm;$(INCLUDE);}find.h \
-    {e:\data\c\ssm;$(INCLUDE);}icon.h \
-    {e:\data\c\ssm;$(INCLUDE);}prodinfo.h \
-    {e:\data\c\ssm;$(INCLUDE);}settings.h \
-    {e:\data\c\ssm;$(INCLUDE);}pmtools.h
+support.obj: support.c $(HEADERS)
+	gcc $(CFLAGS) $(DEBUGFLAGS) support.c -o support.obj
 
-.\pmtools.obj: \
-    e:\data\c\ssm\pmtools.c
+test.obj: test.c $(HEADERS)
+	gcc $(CFLAGS) $(DEBUGFLAGS) test.c -o test.obj
 
-.\main.obj: \
-    e:\data\c\ssm\main.c \
-    {e:\data\c\ssm;$(INCLUDE);}ssm.h \
-    {e:\data\c\ssm;$(INCLUDE);}support.h \
-    {e:\data\c\ssm;$(INCLUDE);}main.h \
-    {e:\data\c\ssm;$(INCLUDE);}acceltable.h \
-    {e:\data\c\ssm;$(INCLUDE);}stringtable.h \
-    {e:\data\c\ssm;$(INCLUDE);}test.h \
-    {e:\data\c\ssm;$(INCLUDE);}menu.h \
-    {e:\data\c\ssm;$(INCLUDE);}question.h \
-    {e:\data\c\ssm;$(INCLUDE);}find.h \
-    {e:\data\c\ssm;$(INCLUDE);}icon.h \
-    {e:\data\c\ssm;$(INCLUDE);}prodinfo.h \
-    {e:\data\c\ssm;$(INCLUDE);}settings.h \
-    {e:\data\c\ssm;$(INCLUDE);}pmtools.h
+ssm.res: ssm.rc ssm.ico $(HEADERS)
+	wrc -r main.rc
 
-.\find.obj: \
-    e:\data\c\ssm\find.c \
-    {e:\data\c\ssm;$(INCLUDE);}ssm.h \
-    {e:\data\c\ssm;$(INCLUDE);}support.h \
-    {e:\data\c\ssm;$(INCLUDE);}main.h \
-    {e:\data\c\ssm;$(INCLUDE);}acceltable.h \
-    {e:\data\c\ssm;$(INCLUDE);}stringtable.h \
-    {e:\data\c\ssm;$(INCLUDE);}test.h \
-    {e:\data\c\ssm;$(INCLUDE);}menu.h \
-    {e:\data\c\ssm;$(INCLUDE);}question.h \
-    {e:\data\c\ssm;$(INCLUDE);}find.h \
-    {e:\data\c\ssm;$(INCLUDE);}icon.h \
-    {e:\data\c\ssm;$(INCLUDE);}prodinfo.h \
-    {e:\data\c\ssm;$(INCLUDE);}settings.h \
-    {e:\data\c\ssm;$(INCLUDE);}pmtools.h
+help.hlp: $(ALL_IPF)
+	wipfc help.ipf -o help.hlp
 
-.\test.obj: \
-    e:\data\c\ssm\test.c \
-    {e:\data\c\ssm;$(INCLUDE);}ssm.h \
-    {e:\data\c\ssm;$(INCLUDE);}support.h \
-    {e:\data\c\ssm;$(INCLUDE);}main.h \
-    {e:\data\c\ssm;$(INCLUDE);}acceltable.h \
-    {e:\data\c\ssm;$(INCLUDE);}stringtable.h \
-    {e:\data\c\ssm;$(INCLUDE);}test.h
+.PHONY : clean
 
-.\ssm.res: \
-    e:\data\c\ssm\ssm.rc \
-    {e:\data\c\ssm;$(INCLUDE)}settings.dlg \
-    {e:\data\c\ssm;$(INCLUDE)}settings.h \
-    {e:\data\c\ssm;$(INCLUDE)}prodinfo.dlg \
-    {e:\data\c\ssm;$(INCLUDE)}prodinfo.h \
-    {e:\data\c\ssm;$(INCLUDE)}test.dlg \
-    {e:\data\c\ssm;$(INCLUDE)}test.h \
-    {e:\data\c\ssm;$(INCLUDE)}find.dlg \
-    {e:\data\c\ssm;$(INCLUDE)}find.h \
-    {e:\data\c\ssm;$(INCLUDE)}question.dlg \
-    {e:\data\c\ssm;$(INCLUDE)}question.h \
-    {e:\data\c\ssm;$(INCLUDE)}main.dlg \
-    {e:\data\c\ssm;$(INCLUDE)}main.h \
-    {e:\data\c\ssm;$(INCLUDE)}ssm.ico \
-    {e:\data\c\ssm;$(INCLUDE)}acceltable.h \
-    {e:\data\c\ssm;$(INCLUDE)}stringtable.h \
-    {e:\data\c\ssm;$(INCLUDE)}icon.h \
-    {e:\data\c\ssm;$(INCLUDE)}menu.h
+clean :
+	rm -rf *exe *res *obj *lib *.hlp
